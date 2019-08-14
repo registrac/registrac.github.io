@@ -1,1 +1,19 @@
-{"short_name":"Registrac","name":"Registrac LLC","icons":[{"src":"/assets/img/inview_logo.svg","type":"image/svg+xml","sizes":"3000x3000"},{"src":"/assets/img/inview_logo.svg","type":"image/svg+xml","sizes":"3000x3000"}],"start_url":"/index.html","display":"standalone","orientation":"portrait"}
+{
+    "short_name": "Registrac",
+    "name": "Registrac LLC",
+    "icons": [
+        {
+            "src": "/assets/img/inview_logo.svg",
+            "type": "image/svg+xml",
+            "sizes": "3000x3000"
+        },
+        {
+            "src": "/assets/img/inview_logo.svg",
+            "type": "image/svg+xml",
+            "sizes": "3000x3000"
+        }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "portrait"
+}
