@@ -273,15 +273,16 @@
 
 @media (min-width:992px) {
     .mainframe {
-        height: 100vh
+        height: 100vh;
     }
 
     .moto {
-        font-size: 2em
+        font-size: 2em;
+        text-align: center;
     }
 
     .company-name {
-        font-size: 3rem
+        font-size: 3rem;
     }
 }
 
