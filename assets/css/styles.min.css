@@ -273,16 +273,28 @@
 
 @media (min-width:992px) {
     .mainframe {
-        height: 100vh
+        height: 100vh;
     }
 
     .moto {
-        font-size: 2em
+        font-size: 2em;
+        text-align: center;
+        font-weight: 300;
+        font-family: Montserrat, sans-serif;
+        color: #464a5f;
     }
 
     .company-name {
-        font-size: 3rem
+        font-size: 3rem;
     }
+}
+
+.moto {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 300;
+    font-family: Montserrat, sans-serif;
+    color: #464a5f;
 }
 
 .btn.btn-primary.learn_more_btn {
