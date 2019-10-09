@@ -161,7 +161,8 @@
 
 @media (min-width:992px) {
   .text-justify.about-text {
-    font-size: 1.2em
+    font-size: 1.2em;
+    font-weight: 400;
   }
 
   .d-lg-flex.align-items-lg-center.mainblock {
@@ -312,9 +313,13 @@
 .wwd-list, .about-text {
   font-size: 1.2rem;
   font-family: Montserrat, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .ion-ios-checkmark-outline {
   color: rgb(17, 155, 119);
+}
+
+.mf1 {
+  background: hsl(158,58%,52%);
 }
