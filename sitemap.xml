@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://registrac.page/about.html</loc>
+        <loc>https://registrac.page/legal/privacy-policy</loc>
     </url>
     <url>
-        <loc>https://registrac.page/contact.html</loc>
+        <loc>https://registrac.page/legal/terms-of-service</loc>
     </url>
     <url>
-        <loc>https://registrac.page/index.html</loc>
+        <loc>https://registrac.page/about</loc>
+    </url>
+    <url>
+        <loc>https://registrac.page/contact</loc>
+    </url>
+    <url>
+        <loc>https://registrac.page/index</loc>
     </url>
 </urlset>
