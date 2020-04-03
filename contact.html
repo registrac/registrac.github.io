@@ -86,25 +86,29 @@
             <input type='text' name='returnurl' value='https://registrac.page/contact?status=formsent' hidden='true'>
             <input type='text' name='source' value='10060' hidden='true'>
 
-            <input class='form-item form-item-half' id='fname' type='text' name='fname' placeholder='First Name'>
-            <span id='fname_error'></span>
+            <div class="form-item-half">
+              <input class='form-item' id='fname' type='text' name='fname' placeholder='First Name'>
+              <small id='fname_error' class="text-danger"></small>
+            </div>
 
-            <input class='form-item form-item-half float-right' id='lname' type='text' name='lname' placeholder='Last Name'>
-            <span id='lname_error'></span>
+            <div class="form-item-half float-right">
+              <input class='form-item' id='lname' type='text' name='lname' placeholder='Last Name'>
+              <small id='lname_error' class="text-danger">
+            </div>
 
             <input class='form-item' id='email' type='email' name='email' placeholder='E-mail'>
-            <span id='email_error'></span>
+            <small id='email_error' class="text-danger"></small>
 
             <input class='form-item' id='tel' type='tel' name='tel' placeholder='Phone'>
-            <span id='tel_error'></span>
+            <small id='tel_error' class="text-danger"></small>
 
             <input class='form-item' id='interest' type='text' name='interest[]' placeholder='Interest'>
-            <span id='interest_error'></span>
+            <small id='interest_error' class="text-danger"></small>
 
             <textarea class='form-textarea' id='message' name='message' placeholder='Start writing your inquiry here...'></textarea>
 
-            <div class='g-recaptcha' data-sitekey='6Lfok-YUAAAAAJcl4vY_KoSvXdlYwpc1fkB1Joav'></div>
-            <span id='captcha_error'></span>
+            <div class='form-item g-recaptcha' data-sitekey='6Lfok-YUAAAAAJcl4vY_KoSvXdlYwpc1fkB1Joav'></div>
+            <small id='captcha_error' class="text-danger"></small>
             <input class='form-btn-success' type='submit' id='submit' name='SMBT' value="Send">
           </form>
         </div>
@@ -122,7 +126,7 @@
         <li class="list-inline-item"><a href="legal/terms-of-service">Terms</a></li>
         <li class="list-inline-item"><a href="legal/privacy-policy">Privacy Policy</a></li>
       </ul>
-      <p class="copyright" style="font-family: Actor, sans-serif;"><span class="logo-text">Registr@c</span>&nbsp;LLC © 2020</p>
+      <p class="copyright" style="font-family: Actor, sans-serif;"><small class="logo-text">Registr@c</small>&nbsp;LLC © 2020</p>
     </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
