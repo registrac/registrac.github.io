@@ -36,6 +36,8 @@
 
     gtag('config', 'UA-147706787-2');
   </script>
+  <script src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous'></script>
+  <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </head>
 
 <body style="font-family: Actor, sans-serif;">
@@ -65,14 +67,8 @@
         </div>
         <div class="col-md-6">
           <h1>Contact Us</h1>
-          <div id="msg"></div>
-          <form action='https://webleads.app/api/contact/create.php?ref=pw0zy6o7atbguh5243gfcdx1rkj8vsinlm9e' method='POST'>
-            <input type='text' name='refcode' value='pw0zy6o7atbguh5243gfcdx1rkj8vsinlm9e' hidden='true'>
-            <input type='text' name='domain' value='registrac.page' hidden='true'>
-            <input type='text' name='owner' value='1' hidden='true'>
-            <input type='text' name='audience_id' value='11' hidden='true'>
-            <input type='text' name='returnurl' value='https://registrac.page/contact?status=formsent' hidden='true'> <input type='text' name='source' value='11' hidden='true'>
-
+          <div id="status_msg"></div>
+          <!-- <form action='https://webleads.app/api/contact/create.php?ref=pw0zy6o7atbguh5243gfcdx1rkj8vsinlm9e' method='POST'>
             <input class='form-item form-item-half' type='text' name='fname' placeholder='First Name' required autofocus>
             <input class='form-item form-item-half float-right' type='text' name='lname' placeholder='Last Name' required>
             <input class='form-item' type='email' name='email' placeholder='E-mail' required>
@@ -80,6 +76,36 @@
             <input class='form-item' type='text' name='interest[]' placeholder='Interest' required>
             <textarea class='form-textarea' name='message' placeholder='Start writing your inquiry here...' rows='4'></textarea>
             <input class='form-btn-success' type='submit' name='SMBT' value='Send' required>
+          </form> -->
+
+          <form method='POST' id='contact_form'>
+            <input type='text' name='refcode' value='tc95ila34zn6eu2o1smggxdwvr80kp7fybhj' hidden='true'>
+            <input type='text' name='domain' value='registrac.page' hidden='true'>
+            <input type='text' name='owner' value='1' hidden='true'>
+            <input type='text' name='audience_id' value='10060' hidden='true'>
+            <input type='text' name='returnurl' value='https://registrac.page/contact?status=formsent' hidden='true'>
+            <input type='text' name='source' value='10060' hidden='true'>
+
+            <input class='form-item form-item-half' id='fname' type='text' name='fname' placeholder='First Name'>
+            <span id='fname_error'></span>
+
+            <input class='form-item form-item-half float-right' id='lname' type='text' name='lname' placeholder='Last Name'>
+            <span id='lname_error'></span>
+
+            <input class='form-item' id='email' type='email' name='email' placeholder='E-mail'>
+            <span id='email_error'></span>
+
+            <input class='form-item' id='tel' type='tel' name='tel' placeholder='Phone'>
+            <span id='tel_error'></span>
+
+            <input class='form-item' id='interest' type='text' name='interest[]' placeholder='Interest'>
+            <span id='interest_error'></span>
+
+            <textarea class='form-textarea' id='message' name='message' placeholder='Start writing your inquiry here...'></textarea>
+
+            <div class='g-recaptcha' data-sitekey='6Lfok-YUAAAAAJcl4vY_KoSvXdlYwpc1fkB1Joav'></div>
+            <span id='captcha_error'></span>
+            <input class='form-btn-success' type='submit' id='submit' name='SMBT' value="Send">
           </form>
         </div>
       </div>
@@ -99,12 +125,48 @@
       <p class="copyright" style="font-family: Actor, sans-serif;"><span class="logo-text">Registr@c</span>&nbsp;LLC © 2020</p>
     </footer>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
   <script src="assets/js/script.min.js?h=6ca1c8bbf10723a5edab8aa895b86ee5"></script>
   <script src="assets/js/contact.js" charset="utf-8"></script>
+  <script>
+        $(document).ready(function() {
+          $('#contact_form').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+              url: 'https://webleads.app/api/contact/create.php',
+              method: 'POST',
+              data: $(this).serialize(),
+              dataType: 'json',
+              beforeSend: function() {
+                $('#submit').attr('disabled', 'disabled');
+              },
+              success: function(data) {
+                $('#submit').attr('disabled', false);
+                if (data.success) {
+                  $('#contact_form')[0].reset();
+                  $('#fname_error').text('');
+                  $('#lname_error').text('');
+                  $('#email_error').text('');
+                  $('#tel_error').text('');
+                  $('#interest_error').text('');
+                  $('#captcha_error').text('');
+                  grecaptcha.reset();
+                  $('#status_msg').text('Form successfully submited!');
+                } else {
+                  $('#fname_error').text(data.fname_error);
+                  $('#lname_error').text(data.lname_error);
+                  $('#email_error').text(data.email_error);
+                  $('#tel_error').text(data.tel_error);
+                  $('#interest_error').text(data.interest_error);
+                  $('#status_msg').text(data.integrity_error);
+                  $('#captcha_error').text(data.captcha_error);
+                }
+              }
+            })
+          });
+        });
+      </script>
 </body>
-
 </html>
