@@ -151,18 +151,18 @@
   <script src="assets/js/script.min.js?h=6ca1c8bbf10723a5edab8aa895b86ee5"></script>
   <script src="assets/js/contact.js" charset="utf-8"></script>
   <script>
-    $(document).ready(function() {
-      $('#contact_form').on('submit', function(event) {
+    $(document).ready(function () {
+      $('#contact_form').on('submit', function (event) {
         event.preventDefault();
         $.ajax({
           url: 'https://webleads.app/api/contact/create.php',
           method: 'POST',
           data: $(this).serialize(),
           dataType: 'json',
-          beforeSend: function() {
+          beforeSend: function () {
             $('#submit').attr('disabled', 'disabled');
           },
-          success: function(data) {
+          success: function (data) {
             $('#submit').attr('disabled', false);
             if (data.success) {
               $('#contact_form')[0].reset();
