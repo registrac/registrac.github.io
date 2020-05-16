@@ -67,14 +67,44 @@
         </div>
         <div class="col-md-6">
           <h1>Contact Us</h1>
-          <div id="status_msg" class="text-success"></div>
-          <form method='POST' id='contact_form'>
+          <!-- <form method='POST' id='contact_form'>
             <input type='text' name='refcode' value='tc95ila34zn6eu2o1smggxdwvr80kp7fybhj' hidden='true'>
             <input type='text' name='domain' value='registrac.page' hidden='true'>
             <input type='text' name='owner' value='1' hidden='true'>
             <input type='text' name='audience_id' value='10060' hidden='true'>
             <input type='text' name='returnurl' value='https://registrac.page/contact?status=formsent' hidden='true'>
             <input type='text' name='source' value='10060' hidden='true'>
+
+            <input class='form-item' id='fname' type='text' name='fname' placeholder='First Name'>
+            <small id='fname_error' class="text-danger"></small>
+
+            <input class='form-item' id='lname' type='text' name='lname' placeholder='Last Name'>
+            <small id='lname_error' class="text-danger"></small>
+
+            <input class='form-item' id='email' type='email' name='email' placeholder='E-mail'>
+            <small id='email_error' class="text-danger"></small>
+
+            <input class='form-item' id='tel' type='tel' name='tel' placeholder='Phone'>
+            <small id='tel_error' class="text-danger"></small>
+
+            <input class='form-item' id='interest' type='text' name='interest[]' placeholder='Interest'>
+            <small id='interest_error' class="text-danger"></small>
+
+            <textarea class='form-textarea' id='message' name='message' placeholder='Start writing your inquiry here...'></textarea>
+
+            <div class='form-item g-recaptcha' data-sitekey='6Lfok-YUAAAAAJcl4vY_KoSvXdlYwpc1fkB1Joav'></div>
+            <small id='captcha_error' class="text-danger"></small>
+            <input class='form-btn-success' type='submit' id='submit' name='SMBT' value="Send">
+          </form> -->
+
+          <form method='POST' id='contact_form'>
+            <span id='status_msg'></span>
+            <input type='text' name='refcode' value='znai0f7j1gg546e8oscbv9pxdwltm2r3kuhy' hidden='true'>
+            <input type='text' name='domain' value='registrac.page' hidden='true'>
+            <input type='text' name='owner' value='259' hidden='true'>
+            <input type='text' name='audience_id' value='10082' hidden='true'>
+            <input type='text' name='returnurl' value='https://registrac.page/contact' hidden='true'>
+            <input type='text' name='source' value='10082' hidden='true'>
 
             <input class='form-item' id='fname' type='text' name='fname' placeholder='First Name'>
             <small id='fname_error' class="text-danger"></small>
