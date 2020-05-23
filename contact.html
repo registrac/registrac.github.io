@@ -37,7 +37,15 @@
     gtag('config', 'UA-147706787-2');
   </script>
   <script src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous'></script>
-  <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+  <script src='https://www.google.com/recaptcha/api.js?render=6LfOOPoUAAAAAJKqOGkKFAuEI8qzoPBZ-vTDKG0C'></script>
+  <script>
+    grecaptcha.ready(function () {
+      grecaptcha.execute('6LfOOPoUAAAAAJKqOGkKFAuEI8qzoPBZ-vTDKG0C', { action: 'contact' }).then(function (token) {
+        var recaptchaResponse = document.getElementById('g-recaptcha');
+        recaptchaResponse.value = token;
+      });
+    });
+  </script>
 </head>
 
 <body style="font-family: Actor, sans-serif;">
@@ -69,34 +77,26 @@
 
           <h1>Contact Us</h1>
           <div id="status_msg" class="text-success"></div>
+
           <form method='POST' id='contact_form'>
-            <input type='text' name='refcode' value='znai0f7j1gg546e8oscbv9pxdwltm2r3kuhy' hidden='true'>
+            <span id='status_msg'></span>
+            <input type='hidden' name='recaptcha_response' id='g-recaptcha'>
+            <input type='text' name='refcode' value='n4spmdkvelh0fc26o8xw3bt97z5gjyragi1u' hidden='true'>
             <input type='text' name='domain' value='registrac.page' hidden='true'>
             <input type='text' name='owner' value='259' hidden='true'>
-            <input type='text' name='audience_id' value='10082' hidden='true'>
-            <input type='text' name='returnurl' value='https://registrac.page/contact' hidden='true'>
-            <input type='text' name='source' value='10082' hidden='true'>
-
-            <input class='form-item' id='fname' type='text' name='fname' placeholder='First Name'>
-            <small id='fname_error' class="text-danger"></small>
-
-            <input class='form-item' id='lname' type='text' name='lname' placeholder='Last Name'>
-            <small id='lname_error' class="text-danger"></small>
-
-            <input class='form-item' id='email' type='email' name='email' placeholder='E-mail'>
-            <small id='email_error' class="text-danger"></small>
-
-            <input class='form-item' id='tel' type='tel' name='tel' placeholder='Phone'>
-            <small id='tel_error' class="text-danger"></small>
-
-            <input class='form-item' id='interest' type='text' name='interest[]' placeholder='Interest'>
-            <small id='interest_error' class="text-danger"></small>
-
-            <textarea class='form-textarea' id='message' name='message' placeholder='Start writing your inquiry here...'></textarea>
-
-            <div class='form-item g-recaptcha' data-sitekey='6Lfok-YUAAAAAJcl4vY_KoSvXdlYwpc1fkB1Joav'></div>
-            <small id='captcha_error' class="text-danger"></small>
-            <input class='form-btn-success' type='submit' id='submit' name='SMBT' value="Send">
+            <input type='text' name='audience_id' value='10087' hidden='true'>
+            <input type='text' name='returnurl' value='registrac.page/contact' hidden='true'>
+            <input type='text' name='source' value='10087' hidden='true'>
+  
+            <input id='fname' class="form-item" type='text' name='fname' placeholder='Name'>
+            <input id='email' class="form-item" type='email' name='email' placeholder='E-mail'>
+            <input id='tel' class="form-item" type='tel' name='tel' placeholder='Phone'>
+            <input id='interest' class="form-item" type='text' name='interest[]' placeholder='Interest'>
+            <textarea id='message' class="form-textarea" name='message' placeholder='Write something.'></textarea>
+  
+            <button id="submit" class="form-btn-success" type="submit" name="SMBT">
+              Send request
+            </button>
           </form>
 
         </div>
@@ -120,80 +120,29 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script> -->
-  <!-- <script src="assets/js/script.min.js"></script> -->
-  <!-- <script src="assets/js/contact.js" charset="utf-8"></script> -->
   <script>
-    // $(document).ready(function() {
-    //   $('#contact_form').on('submit', function(event) {
-    //     event.preventDefault();
-    //     $.ajax({
-    //       url: 'https://webleads.app/api/contact/create.php',
-    //       method: 'POST',
-    //       data: $(this).serialize(),
-    //       dataType: 'json',
-    //       beforeSend: function() {
-    //         $('#submit').attr('disabled', 'disabled');
-    //       },
-    //       success: function(data) {
-    //         $('#submit').attr('disabled', false);
-    //         if (data.success) {
-    //           $('#contact_form')[0].reset();
-    //           $('#fname_error').text('');
-    //           $('#lname_error').text('');
-    //           $('#email_error').text('');
-    //           $('#tel_error').text('');
-    //           $('#interest_error').text('');
-    //           $('#captcha_error').text('');
-    //           grecaptcha.reset();
-    //           $('#status_msg').text('Form successfully submited!');
-    //         } else {
-    //           $('#fname_error').text(data.fname_error);
-    //           $('#lname_error').text(data.lname_error);
-    //           $('#email_error').text(data.email_error);
-    //           $('#tel_error').text(data.tel_error);
-    //           $('#interest_error').text(data.interest_error);
-    //           $('#status_msg').text(data.integrity_error);
-    //           $('#captcha_error').text(data.captcha_error);
-    //         }
-    //       }
-    //     })
-    //   });
-    // });
-    $('#contact_form').on('submit', function(event) {
-      event.preventDefault();
-      $.ajax({
-        url: 'https://webleads.app/api/contact/create.php',
-        method: 'POST',
-        data: $(this).serialize(),
-        dataType: 'json',
-        beforeSend: function() {
-          $('#submit').attr('disabled', 'disabled');
-        },
-        success: function(data) {
-          $('#submit').attr('disabled', false);
-          if (data.success) {
-            $('#contact_form')[0].reset();
-            $('#fname_error').text('');
-            $('#lname_error').text('');
-            $('#email_error').text('');
-            $('#tel_error').text('');
-            $('#interest_error').text('');
-            $('#captcha_error').text('');
-            grecaptcha.reset();
-            $('#status_msg').text('Form successfully submited!');
-          } else {
-            $('#fname_error').text(data.fname_error);
-            $('#lname_error').text(data.lname_error);
-            $('#email_error').text(data.email_error);
-            $('#tel_error').text(data.tel_error);
-            $('#interest_error').text(data.interest_error);
-            $('#status_msg').text(data.integrity_error);
-            $('#captcha_error').text(data.captcha_error);
+    $(document).ready(function() {
+      $('#contact_form').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          url: 'https://webleads.app/api/contact/create.php',
+          method: 'POST',
+          data: $(this).serialize(),
+          dataType: 'json',
+          beforeSend: function() {
+            $('#submit').attr('disabled', 'disabled');
+          },
+          success: function(data) {
+            $('#submit').attr('disabled', false);
+            if (data.success) {
+              $('#contact_form')[0].reset();
+              $('#status_msg').text('We have received your inquiry. Someone from our team will be in touch soon.'); // Edit this line to change success message.
+            } else {
+              $('#status_msg').text(data.response);
+            }
           }
-        }
-      })
+        })
+      });
     });
   </script>
 </body>
